@@ -1,7 +1,7 @@
 {
   "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
   "files": {
-    "ignore": ["node_modules/**/*", ".next/**/*", ".turbo/**/*", ".vercel/**/*", ".wrangler/**/*"]
+    "ignore": ["node_modules/**/*", ".next/**/*", ".turbo/**/*", ".vercel/**/*", ".react-email/**/*"]
   },
   "organizeImports": {
     "enabled": true
@@ -15,7 +15,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [],
+    "ignore": ["node_modules"],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,

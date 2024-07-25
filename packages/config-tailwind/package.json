@@ -2,6 +2,10 @@
   "name": "@repo/tailwind-config",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules dist",
+    "format": "biome check . --write"
+  },
   "exports": {
     ".": "./tailwind.config.ts",
     "./globals.css": "./globals.css"
