@@ -1,14 +1,6 @@
-# Turborepo Tailwind CSS starter
+# Snap
 
-This is an official starter Turborepo.
-
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest -e with-tailwind
-```
+This is customized version from the official starter Turborepo with some additional tools already setup for you.
 
 ## What's inside?
 
@@ -16,9 +8,10 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
 - `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
+- `@repo/ui`: a stub React component library built using [shadcn/ui](https://ui.shadcn.com/)
+- `@repo/email`: a [React Email](https://react.email/) app
+- `@repo/config-tailwind`: a shared [Tailwind CSS](https://tailwindcss.com/) configuration package
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
@@ -29,7 +22,6 @@ This example is set up to produce compiled styles for `ui` components into the `
 
 - Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
 - Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
 - Maintain clear package export boundaries.
 
 Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
@@ -53,4 +45,4 @@ This Turborepo has some additional tools already setup for you:
 
 - [Tailwind CSS](https://tailwindcss.com/) for styles
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [Prettier](https://prettier.io) for code formatting
+- [Biome](https://biomejs.dev/) for code formatting and linting

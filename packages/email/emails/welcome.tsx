@@ -1,5 +1,4 @@
 import { Body, Container, Font, Head, Heading, Hr, Html, Link, Preview, Tailwind, Text } from "@react-email/components";
-import * as React from "react";
 
 interface WelcomeEmailProps {
   userName?: string;
@@ -13,7 +12,7 @@ export const WelcomeEmail = ({ userName }: WelcomeEmailProps) => (
           fontFamily="Geist"
           fallbackFontFamily="Helvetica"
           webFont={{
-            url: "https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/files/geist-sans-latin-400-normal.woff2",
+            url: "https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.3/files/geist-sans-latin-400-normal.woff2",
             format: "woff2",
           }}
           fontWeight={400}
@@ -24,14 +23,14 @@ export const WelcomeEmail = ({ userName }: WelcomeEmailProps) => (
           fontFamily="Geist"
           fallbackFontFamily="Helvetica"
           webFont={{
-            url: "https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/files/geist-sans-latin-500-normal.woff2",
+            url: "https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.3/files/geist-sans-latin-500-normal.woff2",
             format: "woff2",
           }}
           fontWeight={500}
           fontStyle="normal"
         />
       </Head>
-      <Preview>Welcome to Refreshly</Preview>
+      <Preview>Welcome to Snap</Preview>
       <Body className="bg-[#fff] my-auto mx-auto font-sans">
         <Container className="max-w-lg my-[40px] p-[20px]">
           <Heading>Welcome to Snap</Heading>
