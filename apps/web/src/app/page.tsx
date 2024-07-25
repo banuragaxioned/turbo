@@ -1,4 +1,5 @@
-import { Card } from "@repo/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@repo/ui/card";
+import Link from "next/link";
 
 const LINKS = [
   {
@@ -28,9 +29,14 @@ export default function Page(): JSX.Element {
     <main className="flex flex-col items-center justify-between min-h-screen p-24">
       <div className="grid mb-32 text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         {LINKS.map(({ title, href, description }) => (
-          <Card href={href} key={title} title={title}>
-            {description}
-          </Card>
+          <Link key={title} href={href} className="px-5 py-4">
+            <Card>
+              <CardHeader>
+                <CardTitle>{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
         ))}
       </div>
     </main>

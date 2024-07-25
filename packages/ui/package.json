@@ -5,16 +5,24 @@
   "files": ["dist"],
   "exports": {
     "./styles.css": "./dist/index.css",
-    "./card": "./src/card.tsx"
+    "./cn": "./lib/utils.ts",
+    "./card": "./components/ui/card.tsx"
   },
   "license": "MIT",
   "scripts": {
-    "build": "tailwindcss -i ./src/styles.css -o ./dist/index.css",
-    "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
-    "type-check": "tsc --noEmit"
+    "build": "tailwindcss -i ./styles.css -o ./dist/index.css",
+    "dev": "tailwindcss -i ./styles.css -o ./dist/index.css --watch",
+    "type-check": "tsc --noEmit",
+    "ui:add": "pnpm dlx shadcn-ui@latest add",
+    "ui:diff": "pnpm dlx shadcn-ui@latest diff",
+    "clean": "rm -rf .turbo node_modules dist"
   },
   "peerDependencies": {
     "react": "^18.3.1"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
     "@repo/tailwind-config": "workspace:*",

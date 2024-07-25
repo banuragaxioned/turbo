@@ -9,8 +9,8 @@
     "clean": "turbo clean",
     "format-and-lint": "biome check .",
     "format-and-lint:fix": "biome check . --write",
-    "ui:add": "pnpm --filter @refreshly/ui ui:add",
-    "ui:diff": "pnpm --filter @refreshly/ui ui:diff",
+    "ui:add": "pnpm --filter @repo/ui ui:add",
+    "ui:diff": "pnpm --filter @repo/ui ui:diff",
     "manypkg:fix": "manypkg fix",
     "postinstall": "manypkg check"
   },
