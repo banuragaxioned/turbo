@@ -3,7 +3,6 @@ import type { Config } from "tailwindcss";
 // We want each package to be responsible for its own content.
 const config: Omit<Config, "content"> = {
   darkMode: ["class"],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -11,6 +10,10 @@ const config: Omit<Config, "content"> = {
       screens: {
         "2xl": "1400px",
       },
+    },
+    fontFamily: {
+      sans: ["var(--font-geist-sans)"],
+      mono: ["var(--font-geist-mono)"],
     },
     extend: {
       colors: {

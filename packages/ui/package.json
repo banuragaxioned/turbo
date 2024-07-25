@@ -1,12 +1,19 @@
 {
   "name": "@repo/ui",
   "version": "0.0.0",
-  "sideEffects": ["**/*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
     "./styles.css": "./dist/index.css",
     "./cn": "./lib/utils.ts",
-    "./card": "./components/ui/card.tsx"
+    "./button": "./components/ui/button.tsx",
+    "./card": "./components/ui/card.tsx",
+    "./sonner": "./components/ui/sonner.tsx",
+    "./tooltip": "./components/ui/tooltip.tsx"
   },
   "license": "MIT",
   "scripts": {
@@ -21,7 +28,11 @@
     "react": "^18.3.1"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
     "clsx": "^2.1.1",
+    "next-themes": "^0.3.0",
+    "sonner": "^1.5.0",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
@@ -29,6 +40,7 @@
     "@repo/typescript-config": "workspace:*",
     "@types/react": "^18.3.3",
     "autoprefixer": "^10.4.19",
+    "class-variance-authority": "0.7.0",
     "postcss": "^8.4.40",
     "react": "^18.3.1",
     "tailwindcss": "^3.4.6",
