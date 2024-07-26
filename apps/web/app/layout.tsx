@@ -1,11 +1,11 @@
 import "./globals.css";
 import "@repo/ui/styles.css";
 import "@repo/tailwind-config/globals.css";
-import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import { ContextProvider } from "@/components/providers";
 import { cn } from "@repo/ui/cn";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
