@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   }
 
   if (code) {
-    const supabase = createClient(cookieStore);
+    const supabase = createClient();
     await supabase.auth.exchangeCodeForSession(code);
   }
 
