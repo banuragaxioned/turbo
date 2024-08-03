@@ -1,8 +1,8 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { Cookies } from "@/utils/constants";
 import { createClient } from "@repo/supabase/server";
 import { addYears } from "date-fns";
 import { cookies } from "next/headers";
-import { Cookies } from "@/utils/constants";
+import { type NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   const cookieStore = cookies();

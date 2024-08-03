@@ -1,14 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { createClient } from "@repo/supabase/client";
-import { Button } from "@repo/ui/button";
-import { Input } from "@repo/ui/input";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/form";
+import { createClient } from "@repo/supabase/client";
 import type { User } from "@repo/supabase/schema";
+import { Button } from "@repo/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/form";
+import { Input } from "@repo/ui/input";
+import { useCallback, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const formSchema = z.object({
   email: z.string().email().optional(),
