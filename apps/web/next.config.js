@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  transpilePackages: ["@repo/ui", "@repo/tailwind-config"],
+  transpilePackages: ["@repo/ui", "@repo/tailwind-config", "@repo/supabase"],
 };

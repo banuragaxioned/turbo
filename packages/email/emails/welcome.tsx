@@ -55,7 +55,7 @@ export const WelcomeEmail = ({ userName }: WelcomeEmailProps) => (
           </Text>
           <Hr className="my-8" />
           <Link href="https://snap.vercel.app" className="text-sm text-[#b4becc]">
-            Refreshly
+            Snap
           </Link>
         </Container>
       </Body>

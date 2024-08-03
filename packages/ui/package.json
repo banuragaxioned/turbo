@@ -10,6 +10,7 @@
   "exports": {
     "./styles.css": "./dist/index.css",
     "./cn": "./lib/utils.ts",
+    "./icons": "./components/icons.tsx",
     "./avatar": "./components/ui/avatar.tsx",
     "./badge": "./components/ui/badge.tsx",
     "./button": "./components/ui/button.tsx",
