@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code);
   }
 
-  if (returnTo) {
+  if (returnTo && returnTo !== "") {
     return NextResponse.redirect(`${requestUrl.origin}/${returnTo}`);
   }
 
