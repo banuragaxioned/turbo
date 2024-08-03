@@ -1,5 +1,4 @@
 import "./globals.css";
-import "@repo/ui/styles.css";
 import "@repo/tailwind-config/globals.css";
 import { ContextProvider } from "@/components/providers";
 import { cn } from "@repo/ui/cn";
