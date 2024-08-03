@@ -18,6 +18,7 @@
     "./checkbox": "./components/ui/checkbox.tsx",
     "./dialog": "./components/ui/dialog.tsx",
     "./dropdown-menu": "./components/ui/dropdown-menu.tsx",
+    "./form": "./components/ui/form.tsx",
     "./hover-card": "./components/ui/hover-card.tsx",
     "./input": "./components/ui/input.tsx",
     "./label": "./components/ui/label.tsx",
@@ -43,6 +44,7 @@
     "react": "^18.3.1"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -58,8 +60,10 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.416.0",
     "next-themes": "^0.3.0",
+    "react-hook-form": "^7.52.2",
     "sonner": "^1.5.0",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@repo/tailwind-config": "workspace:*",

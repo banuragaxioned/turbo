@@ -1,132 +1,141 @@
-"use client"
+"use client";
 
-import { useCallback, useEffect, useState } from 'react'
-import { createClient } from '@repo/supabase/client'
-import { Button } from '@repo/ui/button'
-import type {  User } from '@repo/supabase/schema'
+import { useCallback, useEffect, useState } from "react";
+import { createClient } from "@repo/supabase/client";
+import { Button } from "@repo/ui/button";
+import { Input } from "@repo/ui/input";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/form";
+import type { User } from "@repo/supabase/schema";
 
-export default function AccountForm({ user }: { user: User}) {
-  const supabase = createClient()
-  const [loading, setLoading] = useState(true)
-  const [fullname, setFullname] = useState<string | null>(null)
-  const [username, setUsername] = useState<string | null>(null)
-  const [website, setWebsite] = useState<string | null>(null)
-  const [avatar_url, setAvatarUrl] = useState<string | null>(null)
+const formSchema = z.object({
+  email: z.string().email().optional(),
+  fullName: z.string().min(2).max(50).optional(),
+  username: z.string().min(2).max(30).optional(),
+  website: z.string().url().optional().or(z.literal("")),
+});
+
+export default function AccountForm({ user }: { user: User }) {
+  const supabase = createClient();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: user?.email || "",
+      fullName: "",
+      username: "",
+      website: "",
+    },
+  });
 
   const getProfile = useCallback(async () => {
     try {
-      setLoading(true)
-
       const { data, error, status } = await supabase
-        .from('profiles')
-        // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
-        .select(`full_name, username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
+        .from("profiles")
+        .select("full_name, username, website, avatar_url")
+        .eq("id", user.id)
+        .single();
 
       if (error && status !== 406) {
-        console.log(error)
-        throw error
+        console.log(error);
+        throw error;
       }
 
       if (data) {
-        setFullname(data.full_name)
-        setUsername(data.username)
-        setWebsite(data.website)
-        setAvatarUrl(data.avatar_url)
+        form.reset({
+          email: user.email,
+          fullName: data.full_name || undefined,
+          username: data.username || undefined,
+          website: data.website || undefined,
+        });
       }
     } catch (error) {
-      alert('Error loading user data!')
-    } finally {
-      setLoading(false)
+      console.error("Error loading user data:", error);
     }
-  }, [user, supabase])
+  }, [user, supabase, form]);
 
   useEffect(() => {
-    getProfile()
-  }, [ getProfile])
+    getProfile();
+  }, [getProfile]);
 
-  async function updateProfile({
-    username,
-    website,
-    avatar_url,
-  }: {
-    username: string | null
-    fullname: string | null
-    website: string | null
-    avatar_url: string | null
-  }) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      setLoading(true)
-
-      const { error } = await supabase.from('profiles').upsert({
+      const { error } = await supabase.from("profiles").upsert({
         id: user?.id as string,
-        full_name: fullname,
-        username,
-        website,
-        avatar_url,
+        full_name: values.fullName,
+        username: values.username,
+        website: values.website,
         updated_at: new Date().toISOString(),
-      })
-      if (error) throw error
-      alert('Profile updated!')
+      });
+      if (error) throw error;
+      alert("Profile updated!");
     } catch (error) {
-      alert('Error updating the data!')
-    } finally {
-      setLoading(false)
+      console.error("Error updating the data:", error);
+      alert("Error updating the data!");
     }
   }
 
   return (
-    <div className="form-widget">
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={user?.email} disabled />
-      </div>
-      <div>
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          id="fullName"
-          type="text"
-          value={fullname || ''}
-          onChange={(e) => setFullname(e.target.value)}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} disabled />
+              </FormControl>
+            </FormItem>
+          )}
         />
-      </div>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
+        <FormField
+          control={form.control}
+          name="fullName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Full Name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
-      <div>
-        <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="url"
-          value={website || ''}
-          onChange={(e) => setWebsite(e.target.value)}
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
-
-      <div>
-        <Button
-          className="button primary block"
-          onClick={() => updateProfile({ fullname, username, website, avatar_url })}
-          disabled={loading}
-        >
-          {loading ? 'Loading ...' : 'Update'}
-        </Button>
-      </div>
-
-      <div>
-        <form action="/auth/signout" method="post">
-          <button className="button block" type="submit">
-            Sign out
-          </button>
-        </form>
-      </div>
-    </div>
-  )
+        <FormField
+          control={form.control}
+          name="website"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Website</FormLabel>
+              <FormControl>
+                <Input {...field} type="url" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" disabled={!form.formState.isDirty || !form.formState.isValid || isLoading}>
+          {isLoading ? "Updating..." : "Update"}
+        </Button>{" "}
+      </form>
+    </Form>
+  );
 }
