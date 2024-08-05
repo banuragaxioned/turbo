@@ -1,7 +1,20 @@
-import LoginButton from "@/components/google-login";
+import { createClient } from "@repo/supabase/server";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@repo/ui/card";
+import { redirect } from "next/navigation";
+import LoginButton from "./google-login";
 
 export default async function LoginForm() {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    redirect("/");
+  }
+
   return (
     <div className="min-h-screen flex items-center">
       <Card className="mx-auto max-w-sm">

@@ -6,12 +6,13 @@ import type { User } from "@repo/supabase/schema";
 import { Button } from "@repo/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/form";
 import { Input } from "@repo/ui/input";
+import { toast } from "@repo/ui/sonner";
 import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const formSchema = z.object({
-  email: z.string().email().optional(),
+  email: z.string().email(),
   fullName: z.string().min(2).max(50).optional(),
   username: z.string().min(2).max(30).optional(),
   website: z.string().url().optional().or(z.literal("")),
@@ -24,7 +25,7 @@ export default function AccountForm({ user }: { user: User }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: user?.email || "",
+      email: user.email || "",
       fullName: "",
       username: "",
       website: "",
@@ -53,7 +54,7 @@ export default function AccountForm({ user }: { user: User }) {
         });
       }
     } catch (error) {
-      console.error("Error loading user data:", error);
+      toast.error("Error getting the profile data. Please try again later.");
     }
   }, [user, supabase, form]);
 
@@ -62,6 +63,7 @@ export default function AccountForm({ user }: { user: User }) {
   }, [getProfile]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
     try {
       const { error } = await supabase.from("profiles").upsert({
         id: user?.id as string,
@@ -71,11 +73,12 @@ export default function AccountForm({ user }: { user: User }) {
         updated_at: new Date().toISOString(),
       });
       if (error) throw error;
-      alert("Profile updated!");
+      toast.success("Profile updated successfully!");
     } catch (error) {
       console.error("Error updating the data:", error);
-      alert("Error updating the data!");
+      toast.error("Error updating the profile. Please try again later.");
     }
+    setIsLoading(false);
   }
 
   return (
@@ -134,7 +137,7 @@ export default function AccountForm({ user }: { user: User }) {
         />
         <Button type="submit" disabled={!form.formState.isDirty || !form.formState.isValid || isLoading}>
           {isLoading ? "Updating..." : "Update"}
-        </Button>{" "}
+        </Button>
       </form>
     </Form>
   );
