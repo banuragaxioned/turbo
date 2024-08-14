@@ -144,7 +144,7 @@ importers:
         version: 2.45.0
       supabase:
         specifier: ^1.187.10
-        version: 1.187.10
+        version: 1.188.4
     devDependencies:
       dotenv:
         specifier: ^16.4.5
@@ -2289,6 +2289,10 @@ packages:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
     engines: {node: '>= 4'}
 
+  ignore@5.3.2:
+    resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
+    engines: {node: '>= 4'}
+
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -3116,8 +3120,8 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
-  supabase@1.187.10:
-    resolution: {integrity: sha512-7Nc50xN0k/G5fX3bpa+ZaulBoK/i5jwdjXhiNzyZhUf8qEWQnSsT1LTidCvpzuGt+8Gi6G3aMAh/5GlRdBLIoQ==}
+  supabase@1.188.4:
+    resolution: {integrity: sha512-ntOhjrBlnMdacbcmGmuv7Q2JuH6oeukc5iCHFtjZxQRmE583p02HdsALEq7KdITEMjFJOvjM4xJ5/32HAYuRQQ==}
     engines: {npm: '>=8'}
     hasBin: true
 
@@ -3683,7 +3687,7 @@ snapshots:
       debug: 4.3.6
       espree: 10.1.0
       globals: 14.0.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -5452,7 +5456,7 @@ snapshots:
       file-entry-cache: 8.0.0
       find-up: 5.0.0
       glob-parent: 6.0.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
@@ -5681,6 +5685,8 @@ snapshots:
   ieee754@1.2.1: {}
 
   ignore@5.3.1: {}
+
+  ignore@5.3.2: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -6549,7 +6555,7 @@ snapshots:
       pirates: 4.0.6
       ts-interface-checker: 0.1.13
 
-  supabase@1.187.10:
+  supabase@1.188.4:
     dependencies:
       bin-links: 4.0.4
       https-proxy-agent: 7.0.5
