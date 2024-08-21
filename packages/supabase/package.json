@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@repo/typescript-config": "workspace:*",
-    "@supabase/ssr": "^0.4.0",
+    "@supabase/ssr": "^0.4.1",
     "@supabase/supabase-js": "^2.45.1",
     "supabase": "^1.190.0"
   },
