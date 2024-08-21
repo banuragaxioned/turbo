@@ -11,6 +11,7 @@
     "format": "biome check . --write",
     "ui:add": "pnpm --filter @repo/ui ui:add",
     "ui:diff": "pnpm --filter @repo/ui ui:diff",
+    "db:push": "turbo db:push",
     "manypkg:fix": "manypkg fix",
     "postinstall": "manypkg check"
   },
