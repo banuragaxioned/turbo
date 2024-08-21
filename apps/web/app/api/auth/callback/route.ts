@@ -1,5 +1,5 @@
 import { Cookies } from "@/utils/constants";
-import { createClient } from "@repo/supabase/server";
+import { createClient } from "@repo/db/server";
 import { addYears } from "date-fns";
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";

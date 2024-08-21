@@ -1,4 +1,4 @@
-import { createClient } from "@repo/supabase/server";
+import { createClient } from "@repo/db/server";
 import { redirect } from "next/navigation";
 import AccountForm from "./account-form";
 

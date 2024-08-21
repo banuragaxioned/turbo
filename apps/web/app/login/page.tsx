@@ -1,4 +1,4 @@
-import { createClient } from "@repo/supabase/server";
+import { createClient } from "@repo/db/server";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@repo/ui/card";
 import { redirect } from "next/navigation";
 import LoginButton from "./google-login";

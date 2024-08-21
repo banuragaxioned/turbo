@@ -1,8 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createClient } from "@repo/supabase/client";
-import type { User } from "@repo/supabase/schema";
+import { createClient } from "@repo/db/client";
+import type { User } from "@repo/db/schema";
 import { Button } from "@repo/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@repo/ui/form";
 import { Input } from "@repo/ui/input";

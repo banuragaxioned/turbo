@@ -1,6 +1,6 @@
 "use client";
 
-import { createClient } from "@repo/supabase/client";
+import { createClient } from "@repo/db/client";
 import { Button } from "@repo/ui/button";
 import { Icons } from "@repo/ui/icons";
 
